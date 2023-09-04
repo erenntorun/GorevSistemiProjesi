@@ -67,6 +67,7 @@
             this.lblSaniye = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -265,7 +266,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(490, 192);
+            this.button1.Location = new System.Drawing.Point(426, 192);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 39);
             this.button1.TabIndex = 11;
@@ -344,7 +345,7 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(652, 192);
+            this.button2.Location = new System.Drawing.Point(582, 192);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 39);
             this.button2.TabIndex = 13;
@@ -374,7 +375,7 @@
             this.lblDakika.AutoSize = true;
             this.lblDakika.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblDakika.ForeColor = System.Drawing.Color.White;
-            this.lblDakika.Location = new System.Drawing.Point(808, 47);
+            this.lblDakika.Location = new System.Drawing.Point(822, 47);
             this.lblDakika.Name = "lblDakika";
             this.lblDakika.Size = new System.Drawing.Size(34, 25);
             this.lblDakika.TabIndex = 15;
@@ -386,7 +387,7 @@
             this.lblSaniye.AutoSize = true;
             this.lblSaniye.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblSaniye.ForeColor = System.Drawing.Color.White;
-            this.lblSaniye.Location = new System.Drawing.Point(848, 47);
+            this.lblSaniye.Location = new System.Drawing.Point(862, 47);
             this.lblSaniye.Name = "lblSaniye";
             this.lblSaniye.Size = new System.Drawing.Size(34, 25);
             this.lblSaniye.TabIndex = 16;
@@ -398,7 +399,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(837, 47);
+            this.label7.Location = new System.Drawing.Point(851, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 25);
             this.label7.TabIndex = 17;
@@ -410,11 +411,27 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(690, 46);
+            this.label6.Location = new System.Drawing.Point(704, 46);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 25);
             this.label6.TabIndex = 18;
             this.label6.Text = "Kalan Süre:";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(734, 192);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(145, 39);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "   Excel";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // Form1
             // 
@@ -422,6 +439,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.ClientSize = new System.Drawing.Size(914, 646);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblSaniye);
@@ -492,6 +510,7 @@
         private System.Windows.Forms.ToolStripMenuItem kullanıcıEkleToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem şifreDeğiştirToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Button button3;
     }
 }
 

@@ -26,7 +26,7 @@ namespace ProjeGörev
 
             KullaniciId = KullaniciVT.GorevliIdGetir(GorevlerVT.KullaniciAdi1.ToString());
  
-            List<Gorevler> list = GorevlerVT.GorevlerListesiniGetir2(comboBox1.Text,comboBox2.Text,textBox1.Text,dateTimePicker1.Value,dateTimePicker2.Value,KullaniciId );
+            List<Gorevler> list = GorevlerVT.GorevlerListesiniGetir3(comboBox1.Text,comboBox2.Text,textBox1.Text,dateTimePicker1.Value,dateTimePicker2.Value,KullaniciId );
 
             foreach (Gorevler item in list)
             {
@@ -38,8 +38,8 @@ namespace ProjeGörev
                 lvitem.SubItems.Add(item.Baslik);
                 lvitem.SubItems.Add(item.Aciliyet);
                 lvitem.SubItems.Add(item.Durum);
-               
-
+                lvitem.SubItems.Add(item.EkleyenKullaniciId.ToString());
+                lvitem.SubItems.Add("");
                 if (item.Tarih < DateTime.Now)
                 {
                     lvitem.ForeColor = Color.Red;
@@ -300,6 +300,11 @@ namespace ProjeGörev
         {
             SifreDegistir giris = new SifreDegistir();
             giris.ShowDialog();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            ExceleYaz.OkuveYaz(listView1, lblKullaniciAdi.Text, this);
         }
     }
 }

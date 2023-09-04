@@ -343,7 +343,101 @@ namespace ProjeGörev
             return list;
         }
 
+        public static List<Gorevler> GorevlerListesiniGetir3(string Kategori, string Durum, string Ara, DateTime BasTarihi, DateTime BitTarihi, int KullaniciId)
+        {
+            List<Gorevler> list = new List<Gorevler>();
 
+            SqlConnection baglan = new SqlConnection(Connection.ConnectionString);
+            bool Yonetici = true;
+            KullanıcıGirişi yeni = new KullanıcıGirişi();
+
+
+
+            SqlCommand cmd = new SqlCommand();
+            if (Yonetici == KullaniciVT.KullaniciYoneticiKontrolu(KullaniciAdi1))
+            {
+                cmd.CommandText = "Select G.Id, K.KategoriAdi, G.Tarih, G.Baslik, A.Aciliyet, D.Durum, G.EkleyenKullaniciId from Gorevler G " +
+                    "left join Kategoriler K on G.KategoriId = K.Id " +
+                    "left join Aciliyet A on G.AciliyetId = A.Id " +
+                    "left join Durum D on G.DurumId = D.Id where G.Baslik like '%'+ @Ara +'%' and " +
+                    "KategoriAdi=(case when @KategoriAdi='TÜMÜ' then KategoriAdi else @KategoriAdi end) " +
+                    "and Durum=(case when @Durum='TÜMÜ' then Durum else @Durum end)" +
+                    "and Tarih between @BasTarihi and @BitTarihi " +
+                    "Order By Tarih asc";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = baglan;
+            }
+            else
+            {
+                cmd.CommandText = "Select G.Id, K.KategoriAdi, G.Tarih, G.Baslik, A.Aciliyet, D.Durum, G.EkleyenKullaniciId " +
+                    @"from (
+	                select Id from Gorevler where  EkleyenKullaniciId = @KullaniciId
+
+	                union
+
+	                select GorevId from Gorevler_Gorevli where GorevliId = @KullaniciId
+                    ) x " +
+                    "left join Gorevler G on G.Id = x.Id " +
+                    "left join Kategoriler K on G.KategoriId = K.Id " +
+                    "left join Aciliyet A on G.AciliyetId = A.Id " +
+                    "left join Durum D on G.DurumId = D.Id " +
+                    "left join Notlar N on G.Id = N.GorevId " +
+                    "where G.Baslik like '%'+ @Ara +'%' and " +
+                    "KategoriAdi=(case when @KategoriAdi='TÜMÜ' then KategoriAdi else @KategoriAdi end) " +
+                    "and Durum=(case when @Durum='TÜMÜ' then Durum else @Durum end) " +
+                    "and Tarih between @BasTarihi and @BitTarihi " +
+                    "Order By Tarih asc";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection = baglan;
+
+                SqlParameter prm5 = new SqlParameter("@KullaniciId", System.Data.SqlDbType.VarChar);
+                prm5.Value = KullaniciId;
+                cmd.Parameters.Add(prm5);
+            }
+
+
+
+            SqlParameter prm = new SqlParameter("@Ara", System.Data.SqlDbType.VarChar);
+            prm.Value = Ara;
+            cmd.Parameters.Add(prm);
+
+            SqlParameter prm1 = new SqlParameter("@KategoriAdi", System.Data.SqlDbType.VarChar);
+            prm1.Value = Kategori;
+            cmd.Parameters.Add(prm1);
+
+            SqlParameter prm2 = new SqlParameter("@Durum", System.Data.SqlDbType.VarChar);
+            prm2.Value = Durum;
+            cmd.Parameters.Add(prm2);
+
+            SqlParameter prm3 = new SqlParameter("@BasTarihi", System.Data.SqlDbType.DateTime);
+            prm3.Value = BasTarihi;
+            cmd.Parameters.Add(prm3);
+
+            SqlParameter prm4 = new SqlParameter("@BitTarihi", System.Data.SqlDbType.DateTime);
+            prm4.Value = BitTarihi;
+            cmd.Parameters.Add(prm4);
+
+
+            baglan.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                Gorevler gorev = new Gorevler();
+                gorev.id = dr["Id"] is DBNull ? 0 : Convert.ToInt32(dr["Id"]);
+                gorev.KategoriAdi = dr["KategoriAdi"] is DBNull ? string.Empty : dr["KategoriAdi"].ToString();
+                gorev.Tarih = dr["Tarih"] is DBNull ? new DateTime(2000, 1, 1) : Convert.ToDateTime(dr["Tarih"]);
+                gorev.Baslik = dr["Baslik"] is DBNull ? string.Empty : dr["Baslik"].ToString();
+                gorev.Aciliyet = dr["Aciliyet"] is DBNull ? string.Empty : dr["Aciliyet"].ToString();
+                gorev.Durum = dr["Durum"] is DBNull ? string.Empty : dr["Durum"].ToString();
+                gorev.EkleyenKullaniciId = dr["EkleyenKullaniciId"] is DBNull ? 0 : Convert.ToInt32(dr["EkleyenKullaniciId"]);               
+
+                list.Add(gorev);            
+                
+            }
+            baglan.Close();
+
+            return list;
+        }
 
 
 

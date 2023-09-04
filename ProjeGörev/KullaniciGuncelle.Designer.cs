@@ -53,6 +53,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -271,12 +272,29 @@
             this.checkBox3.TabIndex = 6;
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(612, 161);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(188, 42);
+            this.button3.TabIndex = 40;
+            this.button3.Text = "   Excel";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // KullaniciGuncelle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.ClientSize = new System.Drawing.Size(901, 553);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBox2);
@@ -327,5 +345,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button3;
     }
 }
