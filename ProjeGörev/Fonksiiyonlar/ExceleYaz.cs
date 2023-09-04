@@ -13,8 +13,6 @@ namespace ProjeGörev
 {
     public class ExceleYaz
     {
-     
-
 
 
         public static void OkuveYaz(System.Windows.Forms.ListView lv, string ExcelIsim, IWin32Window f)
@@ -79,6 +77,8 @@ namespace ProjeGörev
                 }
             }
         }
+
+
 
     }
 }
